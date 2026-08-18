@@ -117,3 +117,58 @@ Please provide:
 - A `Dockerfile` and `docker-compose.yml`.
 - Instructions for setup, database seeding, and running locally.
 - Instructions for running with Docker Compose.
+
+
+## Scaffold the project structure
+
+- Creted components, pages, hooks, services, types, utils inside src folder and public public folder for react project
+- Created routes, controllers, services, db, models, utils, seed inside src and database folder on node project
+- create the important files
+    - client side
+    src/main.tsx, src/App.tsx, index.html, vite.config.ts, tsconfig.json
+    - server side
+        src/index.ts, src/routes/user.routes.ts, src/controllers/user.controller.ts, src/services/user.service.ts, src/db/database.ts, src/db/schema.sql, src/seed/seed.ts, tsconfig.json
+
+## Root setup
+
+- Added script for running the client and server parallally and also build it using lerna
+- Set the config to node-modules as vite recommends it `yarn config set nodeLinker node-modules`
+- Install using `yarn install`
+
+## Client Setup
+
+- Added scripts to dev, build and start using vite
+- Installed vite to workspace using `yarn workspace presight-client add -D vite`
+- Installed typescript react usning `yarn workspace presight-client add -D typescript @vitejs/plugin-react`
+
+## Server setup
+
+- Added scripts to dev, build, start and seed db
+- Installed tsx and @types/node plugin using `yarn workspace presight-server add -D typescript tsx @types/node`
+
+## Run the project
+
+- Run both  using `yarn dev`
+
+## Installing SQLite for the project
+
+- Will be using better-sqlite3 as its significantly faster and excecutes quesries synchronously
+- Sqlite installed using `yarn workspace presight-server add better-sqlite3`
+- installing typescript support for sqlite using `yarn workspace presight-server add -D @types/better-sqlite3`
+
+## Creating the schema 
+- Users table with id, avatar, first_name, last_name, age and nationality
+- Hobbies Reference table with id and name
+- Many to many table for user hobbies with user_id and hobby_id and both are foriegn key from users and hobbies table
+- Added indexes for performance optimisation
+
+## Create a database Connection
+- Create a database connection by write script at server/src/database/database.ts
+
+## Create the seed script
+- Create a seed script at server/src/seed/seed.ts
+- Add the seed command in server's package.json `tsx src/seed/seed.ts`
+- Run the seed command `yarn workspace presight-server seed`
+
+
+
