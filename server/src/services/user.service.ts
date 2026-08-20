@@ -18,9 +18,9 @@ export class UserService {
 
     const hobbyUserMap = new Map<number, string[]>();
     hobbies.forEach((hobby) => {
-      const userHobbies = hobbyUserMap.get(hobby.user_id) || [];
+      const userHobbies = hobbyUserMap.get(hobby.userId) || [];
       userHobbies.push(hobby.hobby);
-      hobbyUserMap.set(hobby.user_id, userHobbies);
+      hobbyUserMap.set(hobby.userId, userHobbies);
     });
 
     const users = usersRow.map((user) => ({

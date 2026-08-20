@@ -27,7 +27,7 @@ export class HobbyRepository {
 
     const placeholders = userIds.map(() => "?").join(",");
     const query = `
-      SELECT uh.user_id, h.name AS hobby
+      SELECT uh.user_id AS userId, h.name AS hobby
       FROM user_hobbies uh
       INNER JOIN hobbies h ON uh.hobby_id = h.id
       WHERE uh.user_id IN (${placeholders})

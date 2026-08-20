@@ -1,17 +1,16 @@
 import express from 'express';
 
+import userRoutes from './routes/user.routes';
+
 const app = express();
 
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/api/health', (_req, res) => {
-  res.json({
-    success: true,
-    message: 'Presight API is running',
-  });
-});
+
+
+app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`API server running at http://localhost:${PORT}`);

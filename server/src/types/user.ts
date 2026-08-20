@@ -1,6 +1,6 @@
 import { FilterCount, Pagination, SortDirection } from "./common";
 
-export type SortField = 'first_name' | 'last_name'| 'age' | 'nationality';
+export type SortField = 'firstName' | 'lastName'| 'age' | 'nationality';
 
 export interface User {
   id: number;

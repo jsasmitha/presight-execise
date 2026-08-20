@@ -4,6 +4,6 @@ export interface Hobby {
 }
 
 export interface UserHobby {
-  user_id: number;
+  userId: number;
   hobby: string;
 }

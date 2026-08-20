@@ -1,3 +1,4 @@
+import { USER_SORT_FIELD_MAP } from "../constants/user";
 import db from "../db/database";
 import { CountResult, FilterCount } from "../types/common";
 import { SqlParameter, WhereClauseResult } from "../types/database";
@@ -85,6 +86,8 @@ export class UserRepository {
 
     const offset = (query.page - 1) * query.pageSize;
 
+    const sortColumn = USER_SORT_FIELD_MAP[query.sortField];
+
     const sortDirection =
       query.sortDirection.toUpperCase() === "ASC" ? "ASC" : "DESC";
 
@@ -92,7 +95,7 @@ export class UserRepository {
       SELECT u.id, u.avatar, u.first_name AS firstName, u.last_name AS lastName, u.age, u.nationality
       FROM users u
       ${where}
-      ORDER BY u.${query.sortField} ${sortDirection},
+      ORDER BY u.${sortColumn} ${sortDirection},
       u.id ASC
       LIMIT ? OFFSET ?
     `;
