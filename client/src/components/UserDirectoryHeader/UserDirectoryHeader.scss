@@ -1,0 +1,43 @@
+@use "./../../styles/index" as *;
+@use "./../../styles/tailwind" as *;
+
+.user-directory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  width: 100%;
+  height: $header-height;
+
+  &-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &-logo {
+      width: 40px;
+      height: 40px;
+      background-color: $color-primary;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    &-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $color-text-primary;
+    }
+  }
+
+  &-actions {
+    @apply flex items-center gap-4 justify-center flex-1 min-w-0;
+  }
+}

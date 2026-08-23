@@ -1,0 +1,38 @@
+@use "./../../styles/tailwind" as *;
+@use "./../../styles/index" as *;
+
+.search-bar {
+  @apply flex items-center w-full max-w-96 relative;
+
+  &-icon {
+    @apply absolute top-1/2 w-4 h-4 -translate-y-1/2 pointer-events-none left-4;
+  }
+
+  &-input {
+    @apply w-full h-11 py-0 pe-4 ps-11 rounded-md text-sm;
+
+    color: $color-text-primary;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+
+    transition: border-color 0.2s ease box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:focus {
+      @apply outline-none;
+
+      border-color: $color-primary;
+      box-shadow: 0 0 0 3px rgba($color-primary, 0.15);
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
+
+      background-color: #f8fafc;
+      opacity: 0.7;
+    }
+  }
+}

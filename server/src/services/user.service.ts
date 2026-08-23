@@ -9,7 +9,7 @@ export class UserService {
   ) {}
 
   // Retrieves a paginated list of users based on the provided query filters, sorting, and pagination parameters. It also fetches the associated hobbies for each user and prepares the response with pagination details and available filters.
-  getUsers(query: UserQuery): PaginatedUserResponse[] {
+  getUsers(query: UserQuery): PaginatedUserResponse {
     const usersRow = this.userRepository.findUsers(query);
 
     const hobbies = this.hobbyRepository.findHobbyByIds(
@@ -32,22 +32,20 @@ export class UserService {
 
     const totalPages = Math.ceil(total / query.pageSize);
 
-    return [
-      {
-        users,
-        pagination: {
-          page: query.page,
-          pageSize: query.pageSize,
-          total,
-          totalPages,
-          hasNext: query.page < totalPages,
-          hasPrevious: query.page > 1,
-        },
-        filters: {
-          hobbies: this.userRepository.findTopHobbies(query),
-          nationalities: this.userRepository.findTopNationalities(query),
-        },
+    return {
+      users,
+      pagination: {
+        page: query.page,
+        pageSize: query.pageSize,
+        total,
+        totalPages,
+        hasNext: query.page < totalPages,
+        hasPrevious: query.page > 1,
       },
-    ];
+      filters: {
+        hobbies: this.userRepository.findTopHobbies(query),
+        nationalities: this.userRepository.findTopNationalities(query),
+      },
+    };
   }
 }

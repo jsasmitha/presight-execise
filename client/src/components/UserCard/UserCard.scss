@@ -1,0 +1,65 @@
+@use "./../../styles/tailwind" as *;
+@use "./../../styles/index" as *;
+
+.user-card {
+  @apply flex  items-center gap-5 p-5 rounded-md shadow-md w-full;
+
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: $color-border-hover;
+    box-shadow: 0 4px 6px rgba($color-primary, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &-avatar {
+    @apply w-20 h-20 rounded-full object-cover;
+    background-color: $color-primary-light;
+  }
+
+  &-info {
+    @apply flex flex-1 min-w-0 flex-col gap-1;
+  }
+
+  &-name {
+    @apply text-base font-semibold overflow-hidden text-ellipsis whitespace-nowrap;
+
+    color: $color-text-primary;
+  }
+
+  &-nationality {
+    @apply text-sm;
+
+    color: $color-text-secondary;
+  }
+
+  &-hobbies {
+    @apply flex flex-wrap gap-2;
+  }
+
+  &-hobby {
+    @apply text-xs px-2 py-1 rounded-md;
+
+    color: $color-text-primary;
+    background-color: $color-primary-light;
+  }
+
+  &-age {
+    @apply flex flex-col items-center min-w-12;
+
+    span {
+      @apply text-sm;
+      color: $color-text-muted;
+    }
+
+    strong {
+      @apply text-base font-semibold;
+      color: $color-text-primary;
+    }
+  }
+}

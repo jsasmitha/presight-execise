@@ -1,0 +1,39 @@
+@use "./../../styles/tailwind" as *;
+@use "./../../styles/index" as *;
+
+.filter-sidebar {
+  @apply flex flex-col w-64 p-6  shrink-0;
+
+  width: $sidebar-width;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+
+  &-header {
+    @apply flex items-center justify-between;
+  }
+
+  &-title {
+    @apply text-base font-semibold;
+    color: $color-text-primary;
+  }
+
+  &-clear {
+    @apply text-sm font-medium;
+
+    color: $color-primary;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-primary-hover;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
+      color: $color-text-muted;
+    }
+  }
+  &-divider {
+    @apply my-4 border-t;
+    border-color: $color-border;
+  }
+}

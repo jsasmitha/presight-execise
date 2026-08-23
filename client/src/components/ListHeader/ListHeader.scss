@@ -1,0 +1,13 @@
+@use "./../../styles/tailwind" as *;
+@use "./../../styles/index" as *;
+
+.list-header {
+  @apply flex items-center justify-between pb-4 mb-4;
+
+  border-bottom: 1px solid $color-border;
+
+  &-label {
+    @apply text-base font-semibold;
+    color: $color-text-primary;
+  }
+}

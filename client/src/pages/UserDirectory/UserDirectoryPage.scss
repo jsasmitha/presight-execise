@@ -1,0 +1,25 @@
+@use "./../../styles/tailwind" as *;
+@use "./../../styles/index" as *;
+
+.user-directory {
+  @apply flex flex-col w-screen h-screen;
+
+  &-body {
+    @apply flex flex-1 gap-6 overflow-hidden p-6;
+  }
+
+  &-main {
+    @apply flex flex-col flex-1 gap-6 p-5 rounded-md shadow-md;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+  }
+  &-state {
+    @apply flex flex-1 items-center justify-center gap-4 p-6 text-center text-sm;
+
+    color: $color-text-secondary;
+
+    &-error {
+      color: $color-error;
+    }
+  }
+}

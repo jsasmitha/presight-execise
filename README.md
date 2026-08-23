@@ -118,16 +118,15 @@ Please provide:
 - Instructions for setup, database seeding, and running locally.
 - Instructions for running with Docker Compose.
 
-
 ## Scaffold the project structure
 
 - Creted components, pages, hooks, services, types, utils inside src folder and public public folder for react project
 - Created routes, controllers, services, db, models, utils, seed inside src and database folder on node project
 - create the important files
-    - client side
+  - client side
     src/main.tsx, src/App.tsx, index.html, vite.config.ts, tsconfig.json
-    - server side
-        src/index.ts, src/routes/user.routes.ts, src/controllers/user.controller.ts, src/services/user.service.ts, src/db/database.ts, src/db/schema.sql, src/seed/seed.ts, tsconfig.json
+  - server side
+    src/index.ts, src/routes/user.routes.ts, src/controllers/user.controller.ts, src/services/user.service.ts, src/db/database.ts, src/db/schema.sql, src/seed/seed.ts, tsconfig.json
 
 ## Root setup
 
@@ -140,6 +139,7 @@ Please provide:
 - Added scripts to dev, build and start using vite
 - Installed vite to workspace using `yarn workspace presight-client add -D vite`
 - Installed typescript react usning `yarn workspace presight-client add -D typescript @vitejs/plugin-react`
+- Installed Sass using `yarn workspace presight-client add -D sass`
 
 ## Server setup
 
@@ -148,7 +148,7 @@ Please provide:
 
 ## Run the project
 
-- Run both  using `yarn dev`
+- Run both using `yarn dev`
 
 ## Installing SQLite for the project
 
@@ -156,19 +156,24 @@ Please provide:
 - Sqlite installed using `yarn workspace presight-server add better-sqlite3`
 - installing typescript support for sqlite using `yarn workspace presight-server add -D @types/better-sqlite3`
 
-## Creating the schema 
+## Creating the schema
+
 - Users table with id, avatar, first_name, last_name, age and nationality
 - Hobbies Reference table with id and name
 - Many to many table for user hobbies with user_id and hobby_id and both are foriegn key from users and hobbies table
 - Added indexes for performance optimisation
 
 ## Create a database Connection
+
 - Create a database connection by write script at server/src/database/database.ts
 
 ## Create the seed script
+
 - Create a seed script at server/src/seed/seed.ts
 - Add the seed command in server's package.json `tsx src/seed/seed.ts`
 - Run the seed command `yarn workspace presight-server seed`
 
+## Client Side plugins
 
-
+- Installed react-query using `yarn add @tanstack/react-query`
+- Installed react-virtual using `yarn workspace presight-client add @tanstack/react-virtual`
