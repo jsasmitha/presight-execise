@@ -1,0 +1,30 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+
+    container_name: presight-server
+
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - sqlite-data:/app/server/database
+
+    restart: unless-stopped
+
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+
+    container_name: presight-client
+
+    ports:
+      - "5173:80"
+
+    restart: unless-stopped
+  
+volumes:
+  sqlite-data:

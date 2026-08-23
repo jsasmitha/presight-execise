@@ -2,6 +2,9 @@
 
 # dependencies
 node_modules/
+**/node_modules/
+
+# yarn
 /.pnp
 .pnp.js
 
@@ -12,6 +15,8 @@ node_modules/
 dist/
 build/
 scripts/
+client/dist/
+server/dist/
 
 # misc
 .DS_Store
@@ -29,3 +34,11 @@ yarn-error.log*
 
 .parcel-cache
 .idea/
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Docker
+.docker/
