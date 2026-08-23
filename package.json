@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "dev": "lerna run dev --parallel",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "seed": "yarn workspace presight-server seed"
   },
   "devDependencies": {
     "lerna": "~8.2.1"

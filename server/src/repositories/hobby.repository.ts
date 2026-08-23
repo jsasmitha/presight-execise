@@ -1,7 +1,7 @@
 import { Statement } from "better-sqlite3";
 
-import db from "../db/database.js";
-import { Hobby, UserHobby } from "../types/hobby.js";
+import db from "@db/database";
+import { Hobby, UserHobby } from "@models/hobby";
 
 export class HobbyRepository {
   private readonly _findAllHobbiesStmt: Statement<[], Hobby>;

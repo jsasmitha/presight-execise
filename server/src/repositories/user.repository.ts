@@ -1,8 +1,8 @@
-import { USER_SORT_FIELD_MAP } from "../constants/user";
-import db from "../db/database";
-import { CountResult, FilterCount } from "../types/common";
-import { SqlParameter, WhereClauseResult } from "../types/database";
-import { UserQuery, UserWithoutHobbies } from "../types/user";
+import { USER_SORT_FIELD_MAP } from "@constants/user";
+import db from "@db/database";
+import { CountResult, FilterCount } from "@models/common";
+import { SqlParameter, WhereClauseResult } from "@models/database";
+import { UserQuery, UserWithoutHobbies } from "@models/user";
 
 export class UserRepository {
   // Builds the WHERE clause and parameters for filtering by first name, last name, and full name.

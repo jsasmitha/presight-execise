@@ -1,35 +1,114 @@
-import db from '../db/database.js';
+import db from "@db/database";
 
 const USER_COUNT = 5000;
 const MIN_AGE = 18;
 const MAX_AGE = 75;
 
 const firstNames = [
-  'Emma', 'Liam', 'Olivia', 'Noah', 'Ava',
-  'Ethan', 'Sophia', 'Lucas', 'Mia', 'Leo',
-  'Isabella', 'James', 'Amelia', 'Daniel', 'Charlotte',
-  'Adam', 'Sara', 'David', 'Nora',
-  'Arjun', 'Priya', 'Rahul', 'Aisha', 'Omar', 'Fatima',
+  "Emma",
+  "Liam",
+  "Olivia",
+  "Noah",
+  "Ava",
+  "Ethan",
+  "Sophia",
+  "Lucas",
+  "Mia",
+  "Leo",
+  "Isabella",
+  "James",
+  "Amelia",
+  "Daniel",
+  "Charlotte",
+  "Adam",
+  "Sara",
+  "David",
+  "Nora",
+  "Arjun",
+  "Priya",
+  "Rahul",
+  "Aisha",
+  "Omar",
+  "Fatima",
 ];
 
 const lastNames = [
-  'Smith', 'Johnson', 'Williams', 'Brown', 'Jones',
-  'Garcia', 'Miller', 'Davis', 'Wilson', 'Anderson',
-  'Thomas', 'Taylor', 'Moore', 'Martin', 'Lee',
-  'Patel', 'Sharma', 'Khan', 'Nair', 'Singh',
+  "Smith",
+  "Johnson",
+  "Williams",
+  "Brown",
+  "Jones",
+  "Garcia",
+  "Miller",
+  "Davis",
+  "Wilson",
+  "Anderson",
+  "Thomas",
+  "Taylor",
+  "Moore",
+  "Martin",
+  "Lee",
+  "Patel",
+  "Sharma",
+  "Khan",
+  "Nair",
+  "Singh",
 ];
 
 const nationalities = [
-  'Indian', 'Emirati', 'British', 'American', 'Canadian', 'Australian', 'French', 'German',
-  'Italian', 'Spanish', 'Japanese', 'Korean', 'Brazilian', 'Mexican', 'Egyptian', 'Jordanian',
-  'Lebanese', 'Pakistani', 'Filipino', 'Singaporean',
+  "Indian",
+  "Emirati",
+  "British",
+  "American",
+  "Canadian",
+  "Australian",
+  "French",
+  "German",
+  "Italian",
+  "Spanish",
+  "Japanese",
+  "Korean",
+  "Brazilian",
+  "Mexican",
+  "Egyptian",
+  "Jordanian",
+  "Lebanese",
+  "Pakistani",
+  "Filipino",
+  "Singaporean",
 ];
 
 const hobbies = [
-  'Reading', 'Running', 'Swimming', 'Cycling', 'Hiking', 'Gaming', 'Photography', 'Cooking',
-  'Travel', 'Music', 'Movies', 'Yoga', 'Football', 'Badminton', 'Tennis', 'Painting', 'Dancing',
-  'Gardening', 'Chess', 'Writing', 'Camping', 'Fishing', 'Fitness', 'Basketball', 'Coding',
-  'Drawing', 'Singing', 'Surfing', 'Climbing', 'Kayaking',
+  "Reading",
+  "Running",
+  "Swimming",
+  "Cycling",
+  "Hiking",
+  "Gaming",
+  "Photography",
+  "Cooking",
+  "Travel",
+  "Music",
+  "Movies",
+  "Yoga",
+  "Football",
+  "Badminton",
+  "Tennis",
+  "Painting",
+  "Dancing",
+  "Gardening",
+  "Chess",
+  "Writing",
+  "Camping",
+  "Fishing",
+  "Fitness",
+  "Basketball",
+  "Coding",
+  "Drawing",
+  "Singing",
+  "Surfing",
+  "Climbing",
+  "Kayaking",
 ];
 
 function randomItem<T>(items: T[]): T {
@@ -71,16 +150,20 @@ const seedDatabase = db.transaction(() => {
     insertHobby.run(hobby);
   }
 
-  const hobbyRows = db.prepare(`
+  const hobbyRows = db
+    .prepare(
+      `
     SELECT id, name
     FROM hobbies
-  `).all() as {
+  `,
+    )
+    .all() as {
     id: number;
     name: string;
   }[];
 
   const hobbyIdByName = new Map(
-    hobbyRows.map(hobby => [hobby.name, hobby.id]),
+    hobbyRows.map((hobby) => [hobby.name, hobby.id]),
   );
 
   const insertUser = db.prepare(`
@@ -136,20 +219,28 @@ try {
   clearDatabase();
   seedDatabase();
 
-  const usersCount = db.prepare(`
+  const usersCount = db
+    .prepare(
+      `
     SELECT COUNT(*) AS count
     FROM users
-  `).get() as { count: number };
+  `,
+    )
+    .get() as { count: number };
 
-  const hobbiesCount = db.prepare(`
+  const hobbiesCount = db
+    .prepare(
+      `
     SELECT COUNT(*) AS count
     FROM hobbies
-  `).get() as { count: number };
+  `,
+    )
+    .get() as { count: number };
 
-  console.log('Database seeded successfully.');
+  console.log("Database seeded successfully.");
   console.log(`Users: ${usersCount.count}`);
   console.log(`Hobbies: ${hobbiesCount.count}`);
 } catch (error) {
-  console.error('Database seeding failed:', error);
+  console.error("Database seeding failed:", error);
   process.exit(1);
 }

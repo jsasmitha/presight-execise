@@ -1,4 +1,4 @@
-# Depandecies
+# Dependencies
 node_modules
 **/node_modules
 
@@ -22,6 +22,10 @@ server/dist
 # IDE
 .vscode
 .idea
+.parcel-cache
+
+# testing
+/coverage
 
 # OS
 .DS_Store

@@ -1,6 +1,6 @@
-import { HobbyRepository } from "../repositories/hobby.repository";
-import { UserRepository } from "../repositories/user.repository";
-import { PaginatedUserResponse, UserQuery } from "../types/user";
+import { UserQuery, PaginatedUserResponse } from "@models/user";
+import { HobbyRepository } from "@repositories/hobby.repository";
+import { UserRepository } from "@repositories/user.repository";
 
 export class UserService {
   constructor(
@@ -8,7 +8,8 @@ export class UserService {
     private readonly hobbyRepository: HobbyRepository,
   ) {}
 
-  // Retrieves a paginated list of users based on the provided query filters, sorting, and pagination parameters. It also fetches the associated hobbies for each user and prepares the response with pagination details and available filters.
+  // Retrieves a paginated list of users based on the provided query filters, sorting, and pagination parameters.
+  // It also fetches the associated hobbies for each user and prepares the response with pagination details and available filters.
   getUsers(query: UserQuery): PaginatedUserResponse {
     const usersRow = this.userRepository.findUsers(query);
 

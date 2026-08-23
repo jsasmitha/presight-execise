@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { userController } from "../container";
+import { userController } from "@container";
 
 const router = Router();
 
