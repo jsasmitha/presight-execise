@@ -9,13 +9,13 @@ COPY package.json yarn.lock ./
 COPY client/package.json ./client/package.json
 COPY server/package.json ./server/package.json
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 COPY client ./client
 
 WORKDIR /app/client
 
-RUN yarn build
+RUN yarn workspace presight-client build
 
 FROM nginx:alpine
 
