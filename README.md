@@ -58,13 +58,13 @@ The application supports searching, filtering, sorting, pagination, infinite scr
 ---
 
 ## Project Structure
-
+```
 ├── client/
 ├── server/
 ├── docker-compose.yml
 ├── package.json
 └── lerna.json
-
+```
 ---
 
 ## Local Setup
