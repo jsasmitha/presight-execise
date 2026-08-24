@@ -22,4 +22,39 @@
       color: $color-error;
     }
   }
+
+  &-filter-toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .user-directory {
+    &-body {
+      @apply flex-col overflow-y-auto;
+    }
+
+    &-main {
+      @apply min-h-[500px];
+    }
+    &-filter-toggle {
+      @apply flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium;
+
+      color: $color-primary;
+      background-color: $color-surface;
+      border: 1px solid $color-border;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .user-directory {
+    &-body {
+      @apply p-4 gap-4;
+    }
+
+    &-main {
+      @apply p-4 gap-4 shadow-none;
+    }
+  }
 }

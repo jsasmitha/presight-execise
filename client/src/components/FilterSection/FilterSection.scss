@@ -2,7 +2,7 @@
 @use "@styles/index" as *;
 
 .filter-section {
-  @apply flex flex-col gap-4 pt-6 w-full h-full overflow-hidden;
+  @apply flex flex-col gap-4 pt-6 w-full overflow-hidden;
 
   &-title {
     @apply text-sm font-semibold;
@@ -12,5 +12,11 @@
 
   .search-bar {
     @apply max-w-none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .filter-section {
+    @apply overflow-visible;
   }
 }

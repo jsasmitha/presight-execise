@@ -5,6 +5,7 @@ import "./FilterSidebar.scss";
 
 // Function to render a sidebar with filter sections for hobbies and nationalities
 export function FilterSidebar({
+  className = "",
   hobbies,
   nationalities,
   selectedHobbies,
@@ -14,7 +15,7 @@ export function FilterSidebar({
   onResetFilters,
 }: FilterSidebarProps) {
   return (
-    <aside className="filter-sidebar">
+    <aside className={`filter-sidebar ${className}`}>
       <div className="filter-sidebar-header">
         <h2 className="filter-sidebar-title">Filters</h2>
         <button className="filter-sidebar-clear" onClick={onResetFilters}>

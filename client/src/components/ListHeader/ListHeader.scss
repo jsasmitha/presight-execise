@@ -11,3 +11,9 @@
     color: $color-text-primary;
   }
 }
+
+@media (max-width: 640px) {
+  .list-header {
+    @apply flex-col items-start;
+  }
+}

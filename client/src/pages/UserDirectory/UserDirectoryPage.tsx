@@ -25,7 +25,7 @@ export function UserDirectoryPage() {
 
   const [searchTermState, setSearchTermState] = useState(filters.searchTerm); // State to manage the search term input in the User Directory page
   const debouncedSearchTerm = useDebounce(searchTermState, 300); // Debounce the search term input to avoid excessive API calls while the user is typing
-
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // State to manage the visibility of the filter sidebar on smaller screens
   // Update the search term in the filters whenever the debounced search term changes
   useEffect(() => {
     setSearchTerm(debouncedSearchTerm);
@@ -108,7 +108,15 @@ export function UserDirectoryPage() {
       ></UserDirectoryHeader>
 
       <div className="user-directory-body">
+        <button
+          type="button"
+          className="user-directory-filter-toggle"
+          onClick={() => setIsFilterOpen((value) => !value)}
+        >
+          {isFilterOpen ? "Hide Filters" : "Filters"}
+        </button>
         <FilterSidebar
+          className={isFilterOpen ? "is-open" : ""}
           hobbies={hobbyItems}
           nationalities={nationalityItems}
           selectedHobbies={filters.hobbies}

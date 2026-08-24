@@ -2,7 +2,7 @@
 @use "@styles/index" as *;
 
 .filter-sidebar {
-  @apply flex flex-col w-64 p-6  shrink-0;
+  @apply flex flex-col p-6  shrink-0;
 
   width: $sidebar-width;
   background-color: $color-surface;
@@ -35,5 +35,21 @@
   &-divider {
     @apply my-4 border-t;
     border-color: $color-border;
+  }
+}
+
+@media (max-width: 1024px) {
+  .filter-sidebar {
+    @apply hidden w-full shrink;
+
+    &.is-open {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .filter-sidebar {
+    @apply p-4;
   }
 }

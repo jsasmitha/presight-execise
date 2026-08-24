@@ -8,6 +8,8 @@ export interface FilterSidebarProps {
   selectedHobbies: string[];
   selectedNationalities: string[];
 
+  className?: string;
+
   onHobbyChange: (hobbies: string[]) => void;
   onNationalityChange: (nationalities: string[]) => void;
 

@@ -60,3 +60,17 @@
     }
   }
 }
+
+@media (max-width: 640px) {
+  .sort-controls {
+    @apply flex-wrap w-full gap-3;
+
+    &-field {
+      @apply flex-1;
+    }
+
+    &-select {
+      @apply w-full min-w-0;
+    }
+  }
+}

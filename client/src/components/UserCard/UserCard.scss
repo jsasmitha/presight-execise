@@ -63,3 +63,37 @@
     }
   }
 }
+
+@media (max-width: 640px) {
+  .user-card {
+    @apply gap-3 p-4;
+
+    &-avatar {
+      @apply w-14 h-14;
+    }
+
+    &-name {
+      @apply text-sm;
+    }
+
+    &-nationality {
+      @apply text-xs;
+    }
+
+    &-hobbies {
+      @apply gap-1;
+    }
+
+    &-age {
+      @apply min-w-10;
+
+      span {
+        @apply text-xs;
+      }
+
+      strong {
+        @apply text-sm;
+      }
+    }
+  }
+}
