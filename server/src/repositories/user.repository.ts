@@ -18,9 +18,9 @@ export class UserRepository {
     const searchTerm = `%${query.search.toLowerCase()}%`;
     conditions.push(`
       (
-        LOWER(u.first_name) LIKE ? 
-        OR LOWER(u.last_name) LIKE ? 
-        OR LOWER(u.first_name || ' ' || u.last_name) LIKE ?
+        u.first_name LIKE ? 
+        OR u.last_name LIKE ? 
+        OR u.first_name || ' ' || u.last_name LIKE ?
       )
     `);
     params.push(searchTerm, searchTerm, searchTerm);

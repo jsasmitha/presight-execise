@@ -3,8 +3,8 @@
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     avatar TEXT NOT NULL,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
+    first_name TEXT NOT NULL COLLATE NOCASE,
+    last_name TEXT NOT NULL COLLATE NOCASE,
     age INTEGER NOT NULL,
     nationality TEXT NOT NULL
 );
@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS user_hobbies (
 );
 
 -- Performance index for users table
-CREATE INDEX IF NOT EXISTS idx_users_first_name ON users(first_name);
-CREATE INDEX IF NOT EXISTS idx_users_last_name ON users(last_name);
+CREATE INDEX IF NOT EXISTS idx_users_first_name ON users(first_name COLLATE NOCASE);
+CREATE INDEX IF NOT EXISTS idx_users_last_name ON users(last_name COLLATE NOCASE);
 CREATE INDEX IF NOT EXISTS idx_users_age ON users(age);
 CREATE INDEX IF NOT EXISTS idx_users_nationality ON users(nationality);
 
