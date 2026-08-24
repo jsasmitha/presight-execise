@@ -1,179 +1,159 @@
-# Presight Frontend Exercise
+# Presight User Directory
 
-Build a small full-stack user directory application. The goal is to evaluate how you design a searchable, filterable, paginated UI backed by persisted data and clear API boundaries.
+A fullstack user directory application build with **React**, **Node.js** and **SQLite**. 
+The application supports searching, filtering, sorting, pagination, infinite scrolling and URL-synchronised state.
 
-The application should include:
+---
 
-- A React client.
-- A Node.js API server.
-- A SQLite database used as the source of truth for user data.
-- Docker configuration for running the application locally.
-
-## Scenario
-
-Users need to browse a large directory of people, search by name, and narrow results by nationality and hobbies. The filter sidebar should help users discover useful filters based on the result set they are currently viewing.
-
-## Requirements
-
-### Data Model
-
-Seed a SQLite database with enough records to make pagination, infinite scroll, search, and filter counts meaningful.
-
-Each user should have:
-
-- `avatar`
-- `first_name`
-- `last_name`
-- `age`
-- `nationality`
-- `hobbies`, from 0 to 10 hobbies per user
-
-Choose a data model that supports the required behavior.
-
-SQLite must be the persisted source of user data.
-
-### API
-
-Expose an API that supports:
-
-- Paginated user results.
-- Text filtering from user input across `first_name` and `last_name`.
-- Filtering by one or more nationalities.
-- Filtering by one or more hobbies.
-- Sorting by `first_name`, `last_name`, `age`, and `nationality`.
-- Pagination metadata so the client can determine whether more results are available.
-- Top 20 hobbies for the active text filter and filter state, including `{ value, count }`.
-- Top 20 nationalities for the active text filter and filter state, including `{ value, count }`.
-
-The top 20 values and counts must reflect the currently applied text filter and selected filters, not the global dataset.
-
-Filter semantics:
-
-- Multiple selected hobbies should match users who have all selected hobbies.
-- Multiple selected nationalities should match users from any selected nationality.
-- Text, hobby, and nationality filters should apply together.
-
-Sorting semantics:
-
-- Sorted results must be deterministic. Use `id` as a final tie-breaker when values are equal.
-- Pagination must respect the active sort without duplicate or missing users.
+## Tech Stack
 
 ### Client
+- React
+- TypeScript
+- Vite
+- TanStack React Query
+- TanStack React Virtual
+- Tailwind CSS
+- Sass
 
-Build a React interface that includes:
+### Server
+- Node.js
+- Express
+- TypeScript
+- SQLite (better-sqlite3)
 
-- A text filter input for `first_name` and `last_name`.
-- A virtualized, infinitely scrolling list of user cards.
-- A sidebar containing the top 20 hobbies and top 20 nationalities for the current result set, including counts.
-- Controls for applying and removing hobby and nationality filters.
-- Controls for choosing sort field and sort direction.
-- Loading, empty, and error states.
-- A responsive layout that remains usable on desktop and mobile.
+### Infrastructure
+- Docker
+- Docker Compose
+- Yarn Workspace
+- Lerna
 
-User cards should follow this structure:
+---
 
-```text
-|----------------------------------|
-| avatar      first_name+last_name |
-|             nationality      age |
-|                                  |
-|             (2 hobbies) (+n)     |
-|----------------------------------|
-```
+## Features
 
-Show up to 2 hobbies on the card. If the user has more hobbies, display the remaining count as `+n`.
+### User Directory
+- Infinite scrolling with virtualisation
+- Search by first name and last name
+- Filter by one or more hobbies
+- Filter by one or more nationalities
+- Sort by:
+  - First Name
+  - Last Name
+  - Age
+  - Nationality
+- URL-synchronized filters and sorting
+- Loading, empty and error states
+- Responsive layout
 
-Use a virtual scroll implementation for the list.
+### API
+- Paginated User Result
+- SQLite as the source truth
+- Top 20 hobbies with counts
+- Top 20 nationalities with counts
+- Deterministic sorting
+- Query Validation
+- Centralised Error Handling
 
-When the text filter or selected filters change, the client must refresh both:
+---
 
-- The paginated user list.
-- The top 20 hobbies and nationalities in the sidebar.
+## Project Structure
 
-The text filter value, selected hobbies, selected nationalities, sort field, and sort direction must be reflected in the URL query string. Reloading or sharing the URL should restore the same view state.
+├── client/
+├── server/
+├── docker-compose.yml
+├── package.json
+└── lerna.json
 
-## Implementation Notes
+---
 
-- Keep the database setup easy to run locally.
-- Include seed logic or a documented command that creates the SQLite database.
-- Include a `Dockerfile` and `docker-compose.yml` that can run the application locally.
+## Local Setup
 
-## Evaluation Focus
+### Prerequisites
+- Node.js 22+
+- Yarn 4+
+- Docker
 
-We will pay particular attention to:
+---
 
-- Correct data persistence and API behavior.
-- Correct filtering, sorting, pagination, and top 20 counts.
-- Smooth infinite scrolling with virtualization.
-- URL-synced state.
-- Clear loading, empty, and error states.
-- Easy local and Docker-based setup.
+### Install dependencies
 
-## Deliverables
+`yarn install`
 
-Please provide:
+---
 
-- Source code for the React client and Node.js server.
-- A `Dockerfile` and `docker-compose.yml`.
-- Instructions for setup, database seeding, and running locally.
-- Instructions for running with Docker Compose.
+### Seed the database
+ 
+ `yarn workspace presight-server seed`
 
-## Scaffold the project structure
+ This creates 'server/database/users.db'
 
-- Creted components, pages, hooks, services, types, utils inside src folder and public public folder for react project
-- Created routes, controllers, services, db, models, utils, seed inside src and database folder on node project
-- create the important files
-  - client side
-    src/main.tsx, src/App.tsx, index.html, vite.config.ts, tsconfig.json
-  - server side
-    src/index.ts, src/routes/user.routes.ts, src/controllers/user.controller.ts, src/services/user.service.ts, src/db/database.ts, src/db/schema.sql, src/seed/seed.ts, tsconfig.json
+ ---
 
-## Root setup
+ ### Run locally
 
-- Added script for running the client and server parallally and also build it using lerna
-- Set the config to node-modules as vite recommends it `yarn config set nodeLinker node-modules`
-- Install using `yarn install`
+ `yarn dev`
 
-## Client Setup
+ Application
+  - Client ```http://localhost:5173```
+  - Server ```http://localhost:3000/api/users```
+  
+---
 
-- Added scripts to dev, build and start using vite
-- Installed vite to workspace using `yarn workspace presight-client add -D vite`
-- Installed typescript react usning `yarn workspace presight-client add -D typescript @vitejs/plugin-react`
-- Installed Sass using `yarn workspace presight-client add -D sass`
+## Docker
 
-## Server setup
+  - Build and start
+    `docker compose up --build`
 
-- Added scripts to dev, build, start and seed db
-- Installed tsx and @types/node plugin using `yarn workspace presight-server add -D typescript tsx @types/node`
+  - Run in background
+    `docker compose up -d --build`
 
-## Run the project
+  - Stop
+    `docker compose down`
 
-- Run both using `yarn dev`
+  - Remove containers and SQLite volume
+    `docker compose down -v`
 
-## Installing SQLite for the project
+---
 
-- Will be using better-sqlite3 as its significantly faster and excecutes quesries synchronously
-- Sqlite installed using `yarn workspace presight-server add better-sqlite3`
-- installing typescript support for sqlite using `yarn workspace presight-server add -D @types/better-sqlite3`
+## API
 
-## Creating the schema
+`GET /api/users`
 
-- Users table with id, avatar, first_name, last_name, age and nationality
-- Hobbies Reference table with id and name
-- Many to many table for user hobbies with user_id and hobby_id and both are foriegn key from users and hobbies table
-- Added indexes for performance optimisation
+### Query Parameters
+| Parameter     | Description                           |
+|---------------|---------------------------------------|
+| search        | Search first and last name            |
+| hobbies       | Comma separated hobbies               |
+| nationalities | Comma separated nationalities         |
+| sortField     | firstName, lastName, age, nationality |
+| sortDirection | asc, desc                             |
+| page          | Page number                           |
+| pageSize      | Page size                             |
 
-## Create a database Connection
+Example
+`GET /api/users?search=john&nationalities=India,Canada&sortField=firstName&sortDirection=asc&page=1&pageSize=30`
 
-- Create a database connection by write script at server/src/database/database.ts
+---
 
-## Create the seed script
+## Database
+- Database is stored at 'server/database/users.db'
+- The database is automatically created and seeded on first Docker startup.
 
-- Create a seed script at server/src/seed/seed.ts
-- Add the seed command in server's package.json `tsx src/seed/seed.ts`
-- Run the seed command `yarn workspace presight-server seed`
+----
 
-## Client Side plugins
+## Design Decisions
+- Respository-Service-Controller architecture
+- Dependency injection through a composition container
+- React Query for server state management
+- React Virtual for efficient rendering of large datasets
+- SQLite used as the persistent data source
+- Docker Compose for one-command local setup
+- URL-synchronized filters for shareable application state
 
-- Installed react-query using `yarn add @tanstack/react-query`
-- Installed react-virtual using `yarn workspace presight-client add @tanstack/react-virtual`
+---
+
+## Future Improvements
+-  Unit and integration tests
+-  Authentication
+-  Request validation middleware
