@@ -5,7 +5,6 @@ WORKDIR /app
 RUN corepack enable
 
 COPY package.json yarn.lock ./
-
 COPY client/package.json ./client/package.json
 COPY server/package.json ./server/package.json
 
@@ -15,7 +14,7 @@ COPY client ./client
 
 WORKDIR /app/client
 
-RUN yarn workspace presight-client build
+RUN yarn build
 
 FROM nginx:alpine
 

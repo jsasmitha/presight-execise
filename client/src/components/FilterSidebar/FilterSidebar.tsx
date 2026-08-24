@@ -1,8 +1,9 @@
-import { FilterSidebarProps } from "../../interfaces/components/filter-sidebar.interface";
-import { FilterSection } from "../FilterSection/FilterSection";
+import { FilterSidebarProps } from "@interfaces/components/filter-sidebar.interface";
+import { FilterSection } from "@components/FilterSection";
 
 import "./FilterSidebar.scss";
 
+// Function to render a sidebar with filter sections for hobbies and nationalities
 export function FilterSidebar({
   hobbies,
   nationalities,

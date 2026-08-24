@@ -1,10 +1,12 @@
-import { use, useMemo, useState } from "react";
-import { FilterSectionProps } from "../../interfaces/components/filter-section.interface";
-import { SearchBar } from "../SearchBar";
+import { useMemo, useState } from "react";
+
+import { FilterSectionProps } from "@interfaces/components/filter-section.interface";
+import { SearchBar } from "@components/SearchBar";
 
 import "./FilterSection.scss";
-import { MultiSelectionList } from "../MultiSelectionList/MultiSelectionList";
+import { MultiSelectionList } from "@components/MultiSelectionList";
 
+// Function to render a filter section with a title, search bar, and multi-selection list
 export function FilterSection({
   title,
   items,

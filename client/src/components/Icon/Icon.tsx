@@ -1,6 +1,9 @@
-import { ICONS } from "../../constants/icons.constant";
-import { IconProps } from "../../interfaces/components/icon.interface";
+import { ICONS } from "@constants/icons.constant";
+import { IconProps } from "@interfaces/components/icon.interface";
 
+import "./Icon.scss";
+
+// Function to render an icon based on the provided name, className, and alt text
 export function Icon({ name, className = "", alt }: IconProps) {
   const IconComponent = ICONS[name];
 

@@ -1,12 +1,14 @@
-import { MultiSelectionListProps } from "../../interfaces/components/multi-selection-list.interface";
+import { MultiSelectionListProps } from "@interfaces/components/multi-selection-list.interface";
 
 import "./MultiSelectionList.scss";
 
+// Function to render a multi-selection list with checkboxes for each item
 export function MultiSelectionList<T>({
   items,
   selectedItems,
   onSelectionChange,
 }: MultiSelectionListProps<T>) {
+  // Handle the change in selection for a specific item
   const handleSectionChange = (value: T) => {
     const updatedSelectedItems = selectedItems.includes(value)
       ? selectedItems.filter((item) => item !== value)

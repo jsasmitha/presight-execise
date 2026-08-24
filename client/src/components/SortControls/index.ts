@@ -1,1 +1,1 @@
-export { SortControls } from "./SortControls";
+export * from "./SortControls";

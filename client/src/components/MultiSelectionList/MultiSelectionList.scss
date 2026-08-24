@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind" as *;
+@use "@styles/index" as *;
 
 .multi-selection-list {
   @apply flex flex-col gap-2 max-h-72 overflow-y-auto;

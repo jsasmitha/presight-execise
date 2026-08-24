@@ -1,6 +1,6 @@
-import { MultiSelectOption } from "../models/multi-select-option.interface";
-import { SelectOption } from "../models/select-option.interface";
+import { MultiSelectOption } from "@interfaces/models/multi-select-option.interface";
 
+// Props interface for the FilterSection component, which represents a section of filters with selectable options
 export interface FilterSectionProps {
   title: string;
   items: MultiSelectOption<string>[];

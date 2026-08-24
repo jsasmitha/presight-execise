@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind" as *;
+@use "@styles/index" as *;
 
 .filter-sidebar {
   @apply flex flex-col w-64 p-6  shrink-0;

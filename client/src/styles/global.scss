@@ -2,48 +2,60 @@
 
 @use "tailwind" as *;
 
-
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-html{
-    font-family: $font-family-base;
+html {
+  font-family: $font-family-base;
 
-    @apply text-base scroll-smooth;
+  @apply text-base scroll-smooth;
 
-    body{
-        @apply m-0 text-base leading-normal;
+  body {
+    @apply m-0 text-base leading-normal;
 
-        font-family: inherit;
-        color: $color-text-primary;
-        background-color: $color-background;
+    font-family: inherit;
+    color: $color-text-primary;
+    background-color: $color-background;
 
-        button, input, select, textarea {
-            font-family: inherit;
-        }
-        button{
-            cursor: pointer;
-        }
-
-        img,svg{
-            display: block;
-            max-width: 100%;
-        }
-
-        a{
-            color: inherit;
-            text-decoration: none;
-        }
-
-        ul, ol{
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        h1,h2,h3,h4,h5,h6, p{
-            margin: 0;
-        }
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
     }
+    button {
+      cursor: pointer;
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+      margin: 0;
+    }
+  }
 }

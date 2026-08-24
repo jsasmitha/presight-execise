@@ -1,7 +1,8 @@
-import { UserCardProps } from "../../interfaces/components/user-card.interface";
+import { UserCardProps } from "@interfaces/components/user-card.interface";
 
 import "./UserCard.scss";
 
+// Function to render a user card with avatar, name, nationality, hobbies, and age
 export function UserCard({ user }: UserCardProps) {
   const visibleHobbies = user.hobbies.slice(0, 2);
   const remainingHobbiesCount = user.hobbies.length - visibleHobbies.length;

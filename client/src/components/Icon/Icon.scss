@@ -1,7 +1,5 @@
+@use "@styles/tailwind" as *;
+
 .icon {
-    display: block;
-    width: 1em;
-    height: 1em;
-    object-fit: contain;
-    user-select: none;
+  @apply block w-4 h-4 object-contain select-none;
 }

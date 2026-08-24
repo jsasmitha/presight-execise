@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind" as *;
+@use "@styles/index" as *;
 
 .user-card {
   @apply flex  items-center gap-5 p-5 rounded-md shadow-md w-full;

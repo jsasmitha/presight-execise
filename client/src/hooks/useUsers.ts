@@ -1,8 +1,10 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { UseUsersFilters } from "../interfaces/hooks/use-users.interface";
-import { getUsers } from "../services/user.service";
-import { PAGE_SIZE } from "../constants/pagination.constants";
 
+import { UseUsersFilters } from "@interfaces/hooks/use-users.interface";
+import { getUsers } from "@services/user.service";
+import { PAGE_SIZE } from "@constants/pagination.constants";
+
+// Custom hook to fetch users with infinite scrolling and filtering options
 export function useUsers(filters: UseUsersFilters) {
   return useInfiniteQuery({
     queryKey: ["users", filters],

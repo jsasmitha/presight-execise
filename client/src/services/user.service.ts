@@ -1,11 +1,9 @@
 import {
   PaginatedUserResponse,
-  User,
   UserQuery,
-} from "../interfaces/models/user.interface";
+} from "@interfaces/models/user.interface";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
+// Service function to fetch users from the API based on the provided query parameters, returning a paginated response
 export async function getUsers(
   query: UserQuery,
 ): Promise<PaginatedUserResponse> {

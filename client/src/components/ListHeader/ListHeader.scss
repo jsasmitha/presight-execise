@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind" as *;
+@use "@styles/index" as *;
 
 .list-header {
   @apply flex items-center justify-between pb-4 mb-4;

@@ -1,6 +1,6 @@
-import { UserSortField } from "../interfaces/components/user-directory.interface";
-import { User } from "../interfaces/models/user.interface";
+import { UserSortField } from "@interfaces/models/user.interface";
 
+// Utility function to parse a comma-separated string into an array of trimmed strings, filtering out any empty values
 export function parseArray(value: string | null): string[] {
   if (!value) {
     return [];
@@ -11,6 +11,7 @@ export function parseArray(value: string | null): string[] {
     .filter(Boolean);
 }
 
+// Utility function to parse a user sort field from a string, returning a valid UserSortField or defaulting to "firstName" if the value is invalid
 export function parseUserSortField(value: string | null): UserSortField {
   switch (value) {
     case "firstName":

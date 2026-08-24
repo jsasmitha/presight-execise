@@ -1,8 +1,9 @@
-import { SearchBarProps } from "../../interfaces/components/search-bar.interface";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "@components/Icon";
+import { SearchBarProps } from "@interfaces/components/search-bar.interface";
 
 import "./SearchBar.scss";
 
+// Function to render a search bar with an icon, input field, and optional placeholder, disabled state, and autofocus
 export function SearchBar({
   searchTerm,
   placeholder = "Search...",
@@ -10,6 +11,7 @@ export function SearchBar({
   autoFocus = false,
   onSearch,
 }: SearchBarProps) {
+  // Handle the change in the input field and call the onSearch callback with the new value
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(event.target.value);
   };

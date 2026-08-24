@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind" as *;
+@use "@styles/index" as *;
 
 .user-list {
   @apply flex flex-1 min-h-0 overflow-y-auto;

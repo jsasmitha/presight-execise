@@ -1,1 +1,1 @@
-export { FilterSidebar } from "./FilterSidebar";
+export * from "./FilterSidebar";

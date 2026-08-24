@@ -1,1 +1,1 @@
-export { UserDirectoryHeader } from "./UserDirectoryHeader";
+export * from "./UserDirectoryHeader";

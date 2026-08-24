@@ -1,5 +1,5 @@
-@use "./../../styles/tailwind" as *;
-@use "./../../styles/index" as *;
+@use "@styles/tailwind.css";
+@use "@styles/index" as *;
 
 .user-directory {
   @apply flex flex-col w-screen h-screen;
